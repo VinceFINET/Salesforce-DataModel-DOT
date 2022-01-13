@@ -1,0 +1,291 @@
+digraph G {
+
+// Dot information at https://www.graphviz.org/pdf/dotguide.pdf
+// CPQ relationships at https://help.salesforce.com/s/articleView?id=sf.cpq_object_relationships.htm&type=5
+
+rankdir=LR
+
+/* ******************************************** */
+/* Legend                                       */
+/* ******************************************** */
+/* CPQ Objects in purple ("#C277F2")
+/* Standard Objects in SF blue ("#009EDB")
+/* Lookup relationship is in gray/filled
+/* MasterDetail is in black/bold
+/* ******************************************** */
+
+
+/* Default box */
+node [shape=box,style=filled,color="#009EDB"]
+
+
+/* ******************************************** */
+/* CPQ objects                                  */
+/* ******************************************** */
+
+"Additional Document" [color="#C277F2"]
+"Block Price" [color="#C277F2"]
+"Configuration Attribute" [color="#C277F2"]
+"Configuration Rule" [color="#C277F2"]
+"Contracted Price" [color="#C277F2"]
+"Cost" [color="#C277F2"]
+"Custom Action" [color="#C277F2"]
+"Custom Action Condition" [color="#C277F2"]
+"Custom Script" [color="#C277F2"]
+"Discount Category" [color="#C277F2"]
+"Discount Schedule" [color="#C277F2"]
+"Discount Tier" [color="#C277F2"]
+"Error Condition" [color="#C277F2"]
+"Favorite" [color="#C277F2"]
+"Favorite Product" [color="#C277F2"]
+"Favorite Share" [color="#C277F2"]
+"Import Column" [color="#C277F2"]
+"Import Format" [color="#C277F2"]
+"Install Processor Log" [color="#C277F2"]
+"Line Column" [color="#C277F2"]
+"Localization" [color="#C277F2"]
+"Lookup Data" [color="#C277F2"]
+"Lookup Query" [color="#C277F2"]
+"Option Constraint" [color="#C277F2"]
+"Price Action" [color="#C277F2"]
+"Price Condition" [color="#C277F2"]
+"Price Dimension" [color="#C277F2"]
+"Price Rule" [color="#C277F2"]
+"Process Input" [color="#C277F2"]
+"Process Input Condition" [color="#C277F2"]
+"Process Input Values" [color="#C277F2"]
+"Product Action" [color="#C277F2"]
+"Product Feature" [color="#C277F2"]
+"Product Option" [color="#C277F2"]
+"Product Rule" [color="#C277F2"]
+"Quote" [color="#C277F2"]
+"Quote Document" [color="#C277F2"]
+"Quote Line" [color="#C277F2"]
+"Quote Line Group" [color="#C277F2"]
+"Quote Process" [color="#C277F2"]
+"Quote Template" [color="#C277F2"]
+"Quote Term" [color="#C277F2"]
+"Search Filter" [color="#C277F2"]
+"Solution Group" [color="#C277F2"]
+"Subscribed Asset" [color="#C277F2"]
+"Subscription" [color="#C277F2"]
+"Summary Variable" [color="#C277F2"]
+"Template Content" [color="#C277F2"]
+"Template Section" [color="#C277F2"]
+"Term Condition" [color="#C277F2"]
+"Theme" [color="#C277F2"]
+"Timing Log" [color="#C277F2"]
+"Upgrade Source" [color="#C277F2"]
+"Web Quote" [color="#C277F2"]
+"Web Quote Line" [color="#C277F2"]
+
+
+
+
+
+/* ******************************************** */
+/* Relation Ships                               */
+/* ******************************************** */
+
+"Additional Document" -> "Opportunity" [style="filled", color="gray50"] // Lookup relationship
+"Additional Document" -> "Quote Template" [style="filled", color="gray50"] // Lookup relationship
+"Additional Document" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Additional Document" -> "Quote" [style="filled", color="gray50"] // Lookup relationship
+"Additional Document" -> "Template Section" [style="filled", color="gray50"] // Lookup relationship
+
+"Asset" -> "Quote Line" [style="filled", color="gray50"] // Lookup relationship
+"Asset" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Asset" -> "Subscription" [style="filled", color="gray50"] // Lookup relationship
+
+"Block Price" -> "Price Book" [style="filled", color="gray50"] // Lookup relationship
+"Block Price" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Configuration Attribute" -> "Product Feature" [style="filled", color="gray50"] // Lookup relationship
+
+"Configuration Rule" -> "Product Feature" [style="filled", color="gray50"] // Lookup relationship
+"Configuration Rule" -> "Product Rule" [label="MD", style="bold"] // Master Detail relationship
+
+"Contract" -> "Account" [style="filled", color="gray50"] // Lookup relationship
+"Contract" -> "Opportunity" [style="filled", color="gray50"] // Lookup relationship
+"Contract" -> "Price Book" [style="filled", color="gray50"] // Lookup relationship
+"Contract" -> "Quote" [style="filled", color="gray50"] // Lookup relationship
+"Contract" -> "User" [style="filled", color="gray50"] // Lookup relationship
+
+"Contracted Price" -> "Contract" [style="filled", color="gray50"] // Lookup relationship
+"Contracted Price" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Contracted Price" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Cost" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Custom Action Condition" -> "Custom Action" [label="MD", style="bold"] // Master Detail relationship
+
+"Discount Schedule" -> "Account" [style="filled", color="gray50"] // Lookup relationship
+"Discount Schedule" -> "Original Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Discount Schedule" -> "Price Book" [style="filled", color="gray50"] // Lookup relationship
+"Discount Schedule" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Discount Schedule" -> "Quote" [style="filled", color="gray50"] // Lookup relationship
+"Discount Schedule" -> "Quote Line" [style="filled", color="gray50"] // Lookup relationship
+
+"Discount Tier" -> "Discount Schedule" [label="MD", style="bold"] // Master Detail relationship
+
+"Error Condition" -> "Filter Variable" [style="filled", color="gray50"] // Lookup relationship
+"Error Condition" -> "Summary Variable" [style="filled", color="gray50"] // Lookup relationship
+"Error Condition" -> "Product Rule" [label="MD", style="bold"] // Master Detail relationship
+
+"Favorite Product" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Favorite Product" -> "Product Option" [style="filled", color="gray50"] // Lookup relationship
+"Favorite Product" -> "Favorite Product" [style="filled", color="gray50"] // Lookup relationship
+"Favorite Product" -> "Favorite" [label="MD", style="bold"] // Master Detail relationship
+
+"Favorite Share" -> "User" [style="filled", color="gray50"] // Lookup relationship
+"Favorite Share" -> "Favorite" [label="MD", style="bold"] // Master Detail relationship
+
+"Import Column" -> "Import Format" [label="MD", style="bold"] // Master Detail relationship
+
+"Line Column" -> "Template Section" [style="filled", color="gray50"] // Lookup relationship
+"Line Column" -> "Quote Template" [label="MD", style="bold"] // Master Detail relationship
+
+"Localization" -> "Line Column" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Price Dimension" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Product Feature" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Product Option" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Quote Template" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Quote Term" [style="filled", color="gray50"] // Lookup relationship
+"Localization" -> "Template Content" [style="filled", color="gray50"] // Lookup relationship
+
+"Lookup Query" -> "Price Rule" [label="MD", style="bold"] // Master Detail relationship
+
+"Opportunity" -> "Quote Contract" [style="filled", color="gray50"] // Lookup relationship
+
+"Opportunity Product" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Opportunity Product" -> "Quote Line" [style="filled", color="gray50"] // Lookup relationship
+"Opportunity Product" -> "Opportunity" [style="filled", color="gray50"] // Lookup relationship
+"Opportunity Product" -> "User" [style="filled", color="gray50"] // Lookup relationship
+
+"Option Constraint" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Option Constraint" -> "Product Option" [style="filled", color="gray50"] // Lookup relationship
+"Option Constraint" -> "Product Option" [label="MD", style="bold"] // Master Detail relationship
+
+"Price Action" -> "Summary Variable" [style="filled", color="gray50"] // Lookup relationship
+"Price Action" -> "Price Rule" [label="MD", style="bold"] // Master Detail relationship
+
+"Price Condition" -> "Summary Variable" [style="filled", color="gray50"] // Lookup relationship
+"Price Condition" -> "Price Rule" [label="MD", style="bold"] // Master Detail relationship
+
+"Price Dimension" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Price Dimension" -> "Price Book" [style="filled", color="gray50"] // Lookup relationship
+"Price Dimension" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Price Rule" -> "Option Constraint" [style="filled", color="gray50"] // Lookup relationship
+
+"Process Input" -> "Process Input Condition" [style="filled", color="gray50"] // Lookup relationship
+"Process Input" -> "Quote Process" [label="MD", style="bold"] // Master Detail relationship
+
+"Process Input Condition" -> "Process Input" [label="MD", style="bold"] // Master Detail relationship
+
+"Process Input Values" -> "Quote" [style="filled", color="gray50"] // Lookup relationship
+"Process Input Values" -> "User" [style="filled", color="gray50"] // Lookup relationship
+
+"Product" -> "Discount Category" [style="filled", color="gray50"] // Lookup relationship
+"Product" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Product" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Product Action" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Product Action" -> "Product Rule" [label="MD", style="bold"] // Master Detail relationship
+
+"Product Feature" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Product Feature" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+
+"Product Option" -> "Product Feature" [style="filled", color="gray50"] // Lookup relationship
+"Product Option" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Product Option" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Quote" -> "Quote Template" [style="filled", color="gray50"] // Lookup relationship
+"Quote" -> "Contract" [style="filled", color="gray50"] // Lookup relationship
+"Quote" -> "Opportunity" [style="filled", color="gray50"] // Lookup relationship
+
+"Quote Document" -> "Opportunity" [style="filled", color="gray50"] // Lookup relationship
+"Quote Document" -> "Quote" [label="MD", style="bold"] // Master Detail relationship
+
+"Quote Line" -> "Asset" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Subscription" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Discount Tier" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Block Price" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Cost" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Contracted Price" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Product Option" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Quote Line" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line" -> "Quote" [label="MD", style="bold"] // Master Detail relationship
+
+"Quote Line Group" -> "Quote Process" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line Group" -> "Solution Group" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line Group" -> "Quote Line Group" [style="filled", color="gray50"] // Lookup relationship
+"Quote Line Group" -> "Quote" [label="MD", style="bold"] // Master Detail relationship
+
+"Quote Template" -> "Template Content" [style="filled", color="gray50"] // Lookup relationship
+
+"Quote Term" -> "Quote" [style="filled", color="gray50"] // Lookup relationship
+"Quote Term" -> "Quote Term" [style="filled", color="gray50"] // Lookup relationship
+"Quote Term" -> "Template Content" [style="filled", color="gray50"] // Lookup relationship
+
+"Search Filter" -> "Custom Action" [style="filled", color="gray50"] // Lookup relationship
+
+"Subscribed Asset" -> "Asset" [style="filled", color="gray50"] // Lookup relationship
+"Subscribed Asset" -> "Subscription" [label="MD", style="bold"] // Master Detail relationship
+
+"Subscription" -> "Account" [style="filled", color="gray50"] // Lookup relationship
+"Subscription" -> "Contract" [style="filled", color="gray50"] // Lookup relationship
+"Subscription" -> "Price Dimension" [style="filled", color="gray50"] // Lookup relationship
+"Subscription" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+"Subscription" -> "Quote Line" [style="filled", color="gray50"] // Lookup relationship
+"Subscription" -> "Subscription" [style="filled", color="gray50"] // Lookup relationship
+
+"Summary Variable" -> "Summary Variable" [style="filled", color="gray50"] // Lookup relationship
+
+"Template Content" -> "Template Section" [label="MD", style="bold"] // Master Detail relationship
+
+"Template Section" -> "Template Content" [style="filled", color="gray50"] // Lookup relationship
+"Template Section" -> "Quote Template" [label="MD", style="bold"] // Master Detail relationship
+
+"Term Condition" -> "Summary Variable" [style="filled", color="gray50"] // Lookup relationship
+"Term Condition" -> "Quote Term" [label="MD", style="bold"] // Master Detail relationship
+
+"Upgrade Source" -> "Product" [style="filled", color="gray50"] // Lookup relationship
+
+"Web Quote" -> "Account" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "Contact" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "Contract" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "Opportunity" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "Price Book" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "Quote" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "Quote Template" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote" -> "User" [style="filled", color="gray50"] // Lookup relationship
+
+"Web Quote Line" -> "Asset" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Block Price" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Contracted Price" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Cost" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Discount Schedule" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Discount Tier" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Subscription" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Web Quote Line" [style="filled", color="gray50"] // Lookup relationship
+"Web Quote Line" -> "Web Quote" [label="MD", style="bold"] // Master Detail relationship
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
